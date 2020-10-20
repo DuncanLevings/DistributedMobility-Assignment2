@@ -2,17 +2,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_values"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/inputFragment">
+
 
     <fragment
         android:id="@+id/inputFragment"
+        android:name="sheridan.levings.assignment2.input.InputFragment"
         android:label="input_fragment"
-        tools:layout="@layout/input_fragment">
-        <action
-            android:id="@+id/action_inputFragment_to_historyFragment"
-            app:destination="@id/historyFragment" />
-    </fragment>
+        tools:layout="@layout/input_fragment" />
     <fragment
         android:id="@+id/historyFragment"
         android:name="sheridan.levings.assignment2.history.HistoryFragment"
@@ -21,5 +19,5 @@
     <action
         android:id="@+id/action_global_inputFragment"
         app:destination="@id/inputFragment"
-        app:popUpToInclusive="true" />
+        app:popUpToInclusive="true" /><action android:id="@+id/action_global_historyFragment" app:destination="@id/historyFragment"/>
 </navigation>

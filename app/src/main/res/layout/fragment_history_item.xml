@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <import type="sheridan.levings.assignment2.database.DiceRoll"/>
+        <variable
+            name="diceRoll"
+            type="DiceRoll" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -28,6 +35,7 @@
             android:textAppearance="?attr/textAppearanceListItem"
             app:layout_constraintStart_toEndOf="@+id/count"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{diceRoll.diceTotal}"
             tools:text="@string/dice" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
