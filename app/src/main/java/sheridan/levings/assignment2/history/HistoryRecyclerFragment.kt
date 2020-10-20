@@ -33,8 +33,6 @@ class HistoryRecyclerFragment(private val context: Context) : RecyclerView.Adapt
 
         fun bind(count: Int, diceRoll: DiceRoll) {
             binding.count.text = binding.root.context.getString(R.string.count, count)
-            println(count)
-            println(diceRoll)
             binding.diceRoll = diceRoll
             binding.executePendingBindings()
         }

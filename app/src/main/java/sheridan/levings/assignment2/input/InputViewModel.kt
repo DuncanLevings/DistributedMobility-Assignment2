@@ -16,19 +16,12 @@ class InputViewModel(application: Application) : AndroidViewModel(application) {
         value = null
     }
 
-    val diceRollId: LiveData<Long?> = _diceRollId
-
     private val diceRollDao: DiceRollDao =
         DiceRollDatabase.getInstance(application).diceRollDao
 
     fun send(diceRoll: DiceRoll){
         viewModelScope.launch {
-            println(diceRoll)
             _diceRollId.value = diceRollDao.insert(diceRoll)
         }
-    }
-
-    fun reset(){
-        _diceRollId.value = null
     }
 }

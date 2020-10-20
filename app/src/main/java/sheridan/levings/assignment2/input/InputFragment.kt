@@ -1,12 +1,11 @@
 package sheridan.levings.assignment2.input
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import sheridan.levings.assignment2.R
 import sheridan.levings.assignment2.database.DiceRoll
 import sheridan.levings.assignment2.databinding.InputFragmentBinding
 import java.util.*
@@ -22,6 +21,14 @@ class InputFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = InputFragmentBinding.inflate(inflater, container, false)
+
+        super.onCreate(savedInstanceState);
+        // recovering the instance state
+        if (savedInstanceState != null) {
+            binding.txtDice1.text = savedInstanceState.getString("dice1")
+            binding.txtDice2.text = savedInstanceState.getString("dice2")
+            binding.txtDice3.text = savedInstanceState.getString("dice3")
+        }
 
         binding.btnRoll.setOnClickListener { send() }
 
@@ -41,5 +48,13 @@ class InputFragment : Fragment() {
         binding.txtDice3.text = roll3.toString()
 
         viewModel.send(DiceRoll(0, "$roll1 + $roll2 + $roll3 = $total"))
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("dice1", binding.txtDice1.text.toString())
+        outState.putString("dice2", binding.txtDice2.text.toString())
+        outState.putString("dice3", binding.txtDice3.text.toString())
+
+        super.onSaveInstanceState(outState)
     }
 }
